@@ -6,7 +6,7 @@ for i in range(T):
 
 	num = nList[s-1:e]
 	num.sort()
-	print("#{0} {1}".format(i, num[k-1]))
+	print("#{0} {1}".format(i+1, num[k-1]))
 
 
 
