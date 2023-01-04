@@ -1,6 +1,6 @@
 import sys
-# filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\코드 구현력 기르기\\input.txt"
-# sys.stdin = open(filePath,"rt");
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\코드 구현력 기르기\\input.txt"
+sys.stdin = open(filePath,"rt");
 
 n = int(input())
 numList = list(map(int, input().split()))
