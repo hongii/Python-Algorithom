@@ -9,11 +9,10 @@ totalCount = 0
 
 for x in inputList:
 	if(stack and x == ")"):
+		stack.pop()
 		if(last == "("):
-			stack.pop()
 			totalCount += len(stack)
 		else:
-			stack.pop()
 			totalCount += 1
 	else:
 		stack.append(x)	
