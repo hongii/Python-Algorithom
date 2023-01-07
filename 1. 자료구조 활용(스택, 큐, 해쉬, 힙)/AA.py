@@ -3,28 +3,20 @@ import sys
 # sys.stdin = open(filePath, "rt")
 inputList = list(input());
 
-res = ""
 stack = []
 for x in inputList:
 	if(x.isdecimal()):
-		res += x
+		stack.append(x)
 	else:
-		if (x == "("):
-			stack.append(x)
-		elif (x == "*" or x == "/"):
-			while (stack and (stack[-1] == "*" or stack[-1] == "/")):
-				res += stack.pop()
-			stack.append(x)
-		elif(x == "+" or x == "-"):
-			while (stack and stack[-1] != "("):
-				res += stack.pop()
-			stack.append(x)
-		elif(x == ")"):
-			while (stack[-1] != "("):
-				res += stack.pop()
-			stack.pop() # 여는 괄호("(") 제거
-		
-while(stack):
-	res += stack.pop()
+		b = int(stack.pop())
+		a = int(stack.pop())
+		if(x == "+"):
+			stack.append(a+b)
+		elif(x == "-"):
+			stack.append(a-b)
+		elif (x == "*"):
+			stack.append(a*b)
+		elif(x == "/"):
+			stack.append(a/b)
 
-print(res)
+print(stack[0])
