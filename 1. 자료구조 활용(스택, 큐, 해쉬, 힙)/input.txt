@@ -1,7 +1,10 @@
-AKDEF
 5
-AYKGDHEJ
-AQKWDERTFYP
-CTFKSBDEA
-ASKGHDEF
-WOPASFKGHDEF
+big
+good
+sky
+blue
+mouse
+sky
+good
+mouse
+big
