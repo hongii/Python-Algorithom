@@ -20,7 +20,7 @@ while(dq):
 	maxTuple = max(dq, key=lambda x: x[1])
 	if (tmp[1] == maxTuple[1]):
 		cnt += 1
-		if(dq[0][0] == m):
+		if(tmp[0] == m):
 			dq.popleft()
 			break
 		else:
