@@ -4,6 +4,7 @@
 # 다시 볼 포인트 
 # -> tuple쌍을 원소로 가지는 리스트 만드는 법
 # -> max()함수에서 key값 설정해서 비교하는 방법
+# -> any 활용사례
 
 
 from collections import deque
