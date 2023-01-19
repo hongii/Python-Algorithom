@@ -20,3 +20,15 @@ for word in words:
   else:
     print("#{0} YES".format(cnt))
     cnt += 1
+
+
+''' solution
+n = int(input())
+for i in range(n):
+	s = input()
+  s = s.lower()
+  if s == s[::-1]: # s[::-1]은 리스트 전체에서, 마지막 인덱스부터 -1씩 감소시키면서 요소를 가져옴 => 리스트를 반대로 뒤집는다.
+		print("#{0} YES".format(i+1))
+  else:
+		print("#{0} NO".format(i+1))
+'''
