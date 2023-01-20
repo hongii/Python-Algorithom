@@ -3,16 +3,14 @@ filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practi
 sys.stdin = open(filePath, "rt")
 
 numList = [i for i in range(0, 21)]
-for i in range(10):
+for _ in range(10):
   a, b = map(int, input().split())
   tmp = numList[a:b+1]
-  numList[a:b+1] = tmp[::-1]
+  numList[a:b+1] = tmp[::-1] #tmp리스트를 역순으로 뒤집는다.
 
-for i in range(21):
-  if i == 0:
-    continue
-  else:
-    print(numList[i], end=" ")
+numList.pop(0)
+for i in range(20):
+  print(numList[i], end=" ")
 
 
 '''
