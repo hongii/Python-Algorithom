@@ -3,7 +3,7 @@ filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practi
 sys.stdin = open(filePath, "rt")
 
 n = int(input())
-board = [[0] * n for i in range(n)]
+board = [[0] * n for _ in range(n)]
 sumMax = 0
 for i in range(n):
   board[i] = list(map(int, input().split()))
