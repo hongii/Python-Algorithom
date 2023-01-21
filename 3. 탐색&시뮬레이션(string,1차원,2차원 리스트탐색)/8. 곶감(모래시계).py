@@ -1,7 +1,7 @@
 import sys
 from collections import deque
-# filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\3. 탐색&시뮬레이션(string,1차원,2차원 리스트탐색)\\input.txt"
-# sys.stdin = open(filePath, "rt")
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\3. 탐색&시뮬레이션(string,1차원,2차원 리스트탐색)\\input.txt"
+sys.stdin = open(filePath, "rt")
 
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
@@ -17,7 +17,7 @@ for x in order:
   board[x[0]-1] = list(tmp)
 
 sum = 0
-l, r = 0, n-1
+l,r = 0, n-1
 for i in range(n):
   for j in range(l, r+1):
     sum += board[i][j]
