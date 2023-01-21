@@ -13,6 +13,7 @@ for i in range(9):
   if set(board[i]) == numSet and set(col) == numSet: #행과 열만 먼저 비교
     check = 1  
 
+# 3*3 격자판 비교
 for i in range(0, 9, 3):
   triple = []
   for j in range(3):
