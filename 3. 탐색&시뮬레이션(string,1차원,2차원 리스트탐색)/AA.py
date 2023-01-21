@@ -6,15 +6,15 @@ board = [list(map(int, input().split())) for _ in range(7)]
 cnt = 0
 
 # 행 방향 회문수 비교
-for i in range(7):
-  for j in range(3):
+for i in range(7): # 총 7개의 행 각각에서
+  for j in range(3): # 하나의 행에서 5글자 회문문자열을 총 3번씩 비교
     tmp = board[i][j:j+5]
-    if tmp[0] == tmp[-1] and tmp[1] == tmp[-2]:
+    if tmp[0] == tmp[-1] and tmp[1] == tmp[-2]: # solution 추가 => if tmp == tmp[::-1]: 이 true라면, 회문구조가 된다.
       cnt += 1
 
 # 열 방향 회문수 비교
-for i in range(7):
-  for j in range(3):
+for i in range(7): # 총 7개의 열 각각에서
+  for j in range(3): # 하나의 열에서 5글자 회문문자열을 총 3번씩 비교 
     tmp = []
     for k in range(5):
       tmp.append(board[k+j][i])
