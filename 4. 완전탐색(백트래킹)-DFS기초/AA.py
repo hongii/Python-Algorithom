@@ -1,23 +1,26 @@
 import sys
-def dfs(idx, sum):
-  if sum > total // 2:  # 시간복잡도 줄이기 위한 조건문.
+
+# solution 추가 -> 재귀함수 조건문 추가함으로써 time limit 해결
+def dfs(idx, sum, checkSum):  # checkSum은 여태 지나온 노드의 값의 합
+  global max, totalSum
+  # resSum = totalSum - checkSum, resSum은 전체 바둑이의 총 무게(전체 노드의 합) - 현재까지 지나온 노드의 합(여태 지나온 노드의 합) -> 즉, leaf node까지 남은 노드의 값의 합
+  if sum + (totalSum - checkSum) < max:
     return
-  if total % 2 != 0:  # 원소의 총 합이 홀수라면 두 부분집합의 합이 같은 경우가 나올 수 없다.
+  if sum > c:
     return
   if idx == n:
-    if sum == (total-sum):
-      print("YES")
-      sys.exit(0)
+    if sum <= c and max < sum:
+      max = sum
+      return
   else:
-    dfs(idx+1, sum + numList[idx])
-    dfs(idx+1, sum)
+    dfs(idx+1, sum + weight[idx], sum + weight[idx])
+    dfs(idx+1, sum, sum + weight[idx])
 
 
 if __name__ == "__main__":
-	n = int(input())
-	numList = list(map(int, input().split()))
-	total = sum(numList)
-	dfs(0, 0)  # 만약 두 부분집합의 합이 같은 경우가 있다면 아래 print코드는 실행되지 않는다.
-	print("NO")  # dfs가 강제종료 되지 않았다면, 두 부분집합의 합이 같은 경우가 없다는 뜻.
-
-
+  c, n = map(int, input().split())
+  weight = [int(input()) for _ in range(n)]
+  totalSum = sum(weight)
+  max = 0
+  dfs(0, 0, 0)
+  print(max)
