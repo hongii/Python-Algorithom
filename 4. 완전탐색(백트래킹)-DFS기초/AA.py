@@ -1,20 +1,28 @@
-n, m = map(int, input().split())
-res = [0] * m
-cnt = 0
+import sys
+
+n = int(input())
+coins = list(map(int, input().split()))
+coins.sort(reverse=True)
+m = int(input())
+minCnt = sys.maxsize
+
+# solution
 
 
-def dfs(x):  # x는 depth
-  global cnt
-  if x == m:
-    cnt += 1
-    for i in range(m):
-      print(res[i], end=" ")
-    print()
+def dfs(x, res):
+  global minCnt
+  if res > m:
+    return
+  if x >= minCnt:
+    return
+  if res == m:
+    if x < minCnt:
+      minCnt = x
   else:
-    for i in range(1, n+1):
-      res[x] = i
-      dfs(x+1)
+    for i in range(n):
+      dfs(x+1, res+coins[i])
 
 
-dfs(0)
-print(cnt)
+dfs(0, 0)
+print(minCnt)
+
