@@ -18,7 +18,7 @@ def dfs(x, sum):
   if x == n and sum == f:
     for x in p:
       print(x, end=" ")
-    sys.exit()
+    sys.exit(0)
   else:
     for i in range(1, n+1):
       if check[i] == 0:
