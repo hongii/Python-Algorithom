@@ -7,6 +7,7 @@ n, m = map(int, input().split())
 graph = [[0] * (n+1) for _ in range(n+1)]
 check = [0] * (n+1) 
 cnt = 0
+path = [1]  # 1번노드 부터 n번 노드까지 가는 경로이므로 1번 노드가 시작점이 된다.(시작점은 항상 경로의 가장 처음 노드가 된다)
 
 for i in range(m):
   x, y = map(int, input().split())
@@ -17,13 +18,16 @@ def dfs(v):  # v는 node번호
 	global path, cnt
 	if v == n:
 		cnt += 1
+		print(*path) # 경로 출력
 	else:
 		for i in range(1, n+1):
 			if graph[v][i] == 1:
 				if check[i] == 0:
 					check[i] = 1
+					path.append(i)
 					dfs(i)
 					check[i] = 0
+					path.pop()
 
 check[1] = 1  # 1번노드 부터 n번 노드까지 가는 경로이므로 1번 노드가 시작점이 된다.
 dfs(1)
