@@ -1,21 +1,21 @@
-# 다시 풀어볼 문제 -> 아이디어 구상 못함
-T = int(input())
-k = int(input())
-coins = [list(map(int, input().split())) for _ in range(k)]
-cnt = 0
+n = int(input())
+coins = [int(input()) for _ in range(n)]
+moneySum = [0] * 3
+minGap = sum(coins)
 
 
-def dfs(x, res):
-  global cnt
-  if res > T:
-    return
-  if x == k:
-    if res == T:
-      cnt += 1
+def dfs(x):
+  global minGap
+  if x == n:
+    if max(moneySum) - min(moneySum) < minGap:
+      if len(list(set(moneySum))) == 3:  # moneySum에 들어있는 값들이 모두 다른 경우만 허용
+        minGap = max(moneySum) - min(moneySum)
   else:
-    for i in range(0, coins[x][1]+1):
-      dfs(x+1, res+(coins[x][0]*i))
+    for i in range(3):
+      moneySum[i] += coins[x]
+      dfs(x+1)
+      moneySum[i] -= coins[x]
 
 
-dfs(0, 0)
-print(cnt)
+dfs(0)
+print(minGap)
