@@ -11,7 +11,7 @@ cnt = 0
 
 def dfs(x, res):
   if x == k:
-    if res > 0:
+    if s >= res > 0:
       check[res] = 1
   else:
     dfs(x+1, res+weight[x]) # 양팔 저울의 왼쪽에 추를 놓는 경우(+)
