@@ -14,9 +14,9 @@ def dfs(x, res):
     if res > 0:
       check[res] = 1
   else:
-    dfs(x+1, res+weight[x])
-    dfs(x+1, res-weight[x])
-    dfs(x+1, res)
+    dfs(x+1, res+weight[x]) # 양팔 저울의 왼쪽에 추를 놓는 경우(+)
+    dfs(x+1, res-weight[x]) # 양팔 저울의 오른쪽에 추를 놓는 경우(-)
+    dfs(x+1, res) # 해당 추를 저울에 올려두지 않는 경우
 
 dfs(0, 0)
 for i in range(1, s+1):
