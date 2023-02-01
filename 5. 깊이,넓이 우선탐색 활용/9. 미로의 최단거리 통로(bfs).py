@@ -1,4 +1,7 @@
 from collections import deque
+import sys
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath, "rt")
 
 board = [list(map(int, input().split())) for _ in range(7)]
 dq = deque()
