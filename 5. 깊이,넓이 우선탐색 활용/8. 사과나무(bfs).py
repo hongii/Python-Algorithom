@@ -1,13 +1,17 @@
 from collections import deque
+import sys
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath, "rt")
+
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
 
 
 # solution 추가
-dx = [-1, 0, 1, 0]
+dx = [-1, 0 , 1, 0]
 dy = [0, 1, 0, -1]
 dq = deque()
-dq.append((n//2, n//2))  # (x좌표, y좌표)
+dq.append((n//2, n//2)) # (x좌표, y좌표)
 res = board[n//2][n//2]
 check = [[0] * n for _ in range(n)]
 check[n//2][n//2] = 1
@@ -19,7 +23,7 @@ while True:
   size = len(dq)
   for i in range(size):
     now = dq.popleft()
-    for j in range(4):  # 시계방향으로 4번 수행
+    for j in range(4): # 시계방향으로 4번 수행
       x = now[0]+dx[j]
       y = now[1]+dy[j]
       if check[x][y] == 0:
