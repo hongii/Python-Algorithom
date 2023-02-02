@@ -1,4 +1,7 @@
 from collections import deque
+import sys
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath, "rt")
 
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
@@ -8,7 +11,6 @@ dq.append((0, 0))
 cnt = 0
 check = [[0]*7 for _ in range(7)]
 check[0][0] = 1
-
 
 def dfs(x, y):
   global cnt
@@ -22,8 +24,5 @@ def dfs(x, y):
         check[x2][y2] = 1
         dfs(x2, y2)
         check[x2][y2] = 0
-
-
 dfs(0, 0)
 print(cnt)
-
