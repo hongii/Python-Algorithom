@@ -1,3 +1,7 @@
+import sys
+filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath, "rt")
+
 n = int(input())
 board = [list(map(int, input().split())) for i in range(n)]
 dx = [-1, 0, 1, 0]
@@ -17,7 +21,6 @@ for i in range(n):
     end = (i, board[i].index(max(board[i])))
 check[start[0]][start[1]] = 1
 
-
 def dfs(node):
   global cnt
   if node == end:
@@ -30,7 +33,6 @@ def dfs(node):
         check[x][y] = 1
         dfs((x, y))
         check[x][y] = 0
-
-
+        
 dfs(start)
 print(cnt)
