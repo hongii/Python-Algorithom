@@ -1,36 +1,31 @@
 n = int(input())
-board = [list(map(int, input().split())) for i in range(n)]
+board = [list(map(int, input())) for _ in range(n)]
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
-check = [[0]*n for _ in range(n)]
-cnt = 0
-
-minNum = board[0][0]
-maxNum = board[0][0]
-start, end = (0, 0), (0, 0)
-for i in range(n):
-  if minNum > min(board[i]):
-    minNum = min(board[i])
-    start = (i, board[i].index(min(board[i])))
-  if maxNum < max(board[i]):
-    maxNum = max(board[i])
-    end = (i, board[i].index(max(board[i])))
-check[start[0]][start[1]] = 1
+res = []
+cnt = 1
 
 
 def dfs(node):
   global cnt
-  if node == end:
-    cnt += 1
-  else:
-    for i in range(4):
-      x = node[0] + dx[i]
-      y = node[1] + dy[i]
-      if 0 <= x < n and 0 <= y < n and check[x][y] == 0 and board[x][y] > board[node[0]][node[1]]:
-        check[x][y] = 1
-        dfs((x, y))
-        check[x][y] = 0
+  board[node[0]][node[1]] = 0
+  for i in range(4):
+    x = node[0] + dx[i]
+    y = node[1] + dy[i]
+    if 0 <= x < n and 0 <= y < n and board[x][y] == 1:
+      cnt += 1
+      board[node[0]][node[1]] = 0
+      dfs((x, y))
 
 
-dfs(start)
-print(cnt)
+for i in range(n):
+  for j in range(n):
+    if board[i][j] == 1:
+      dfs((i, j))
+      res.append(cnt)
+      cnt = 1
+
+print(len(res))
+res.sort()
+for x in res:
+  print(x)
