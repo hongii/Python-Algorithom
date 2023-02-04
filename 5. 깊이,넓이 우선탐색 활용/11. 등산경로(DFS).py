@@ -9,6 +9,7 @@ dy = [0, 1, 0, -1]
 check = [[0]*n for _ in range(n)]
 cnt = 0
 
+# 이중 리스트인 board에서 최소값의 좌표를 start점으로, 최대값의 죄표를 end지점으로 설정 
 minNum = board[0][0]
 maxNum = board[0][0]
 start, end = (0, 0), (0, 0)
