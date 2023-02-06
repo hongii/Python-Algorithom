@@ -10,12 +10,15 @@ res = []
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 dq = deque()
+
+# 입력받은 board에서의 가장 큰 높이 값 찾기
 maxHeight = 0
 for i in range(n):
   tmpMax = max(board[i])
   if tmpMax > maxHeight:
     maxHeight = tmpMax
-print(maxHeight)
+# print(maxHeight)
+
 for h in range(1, 101):
   if h == maxHeight:
     break
