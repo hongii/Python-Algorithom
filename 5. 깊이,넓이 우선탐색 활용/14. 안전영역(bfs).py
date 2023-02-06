@@ -1,4 +1,8 @@
 from collections import deque
+import sys
+filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath_desktop, "rt")
 
 n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
