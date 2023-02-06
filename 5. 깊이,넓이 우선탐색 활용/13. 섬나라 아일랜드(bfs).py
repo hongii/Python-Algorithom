@@ -14,6 +14,7 @@ dq = deque()
 for i in range(n):
   for j in range(n):
     if board[i][j] == 1:
+      board[i][j] = 0
       dq.append((i, j))
       cnt += 1
       while dq:
