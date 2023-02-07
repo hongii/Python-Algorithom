@@ -3,26 +3,23 @@ import sys
 
 board = [list(map(int, input().split())) for _ in range(10)]
 check = [[0]*10 for _ in range(10)]
-dy = [-1, 1]
 
 def dfs(x, y):
   if x == 0 and board[x][y] == 1:
     print(y)
-    sys.exit(0)
   else:
-    for i in range(2):
-      y_ = y + dy[i]
-      if 0<=x<10 and 0<=y_<10 and board[x][y_] == 1 and check[x][y_] == 0:
-        check[x][y_] = 1
-        # print(1, (x, y_))
-        dfs(x, y_)
-        check[x][y_] = 0
-    else:
-      if 0<x<10 and 0<=y<10 and board[x-1][y] == 1 and check[x-1][y] == 0:
-        check[x-1][y] = 1
-        # print(2, (x-1, y))
-        dfs(x-1, y)
-        check[x-1][y] = 0
+    if 0<=x<10 and 0<= y-1 <10 and board[x][y-1] == 1 and check[x][y-1] == 0:
+      check[x][y-1] = 1
+      dfs(x, y-1)
+      check[x][y-1] = 0
+    elif 0<=x<10 and 0<= y+1 <10 and board[x][y+1] == 1 and check[x][y+1] == 0:
+      check[x][y+1] = 1
+      dfs(x, y+1)
+      check[x][y+1] = 0
+    else:   
+      check[x-1][y] = 1
+      dfs(x-1, y)
+      check[x-1][y] = 0
 
 for i in range(10):
   if board[9][i] == 2:
