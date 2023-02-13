@@ -1,21 +1,27 @@
-k, n = map(int, input().split())
-numList = [int(input()) for _ in range(k)]
+n, m = map(int, input().split())
+dvd = list(map(int, input().split()))
 
-maxLen = max(numList)
+maxTime = sum(dvd)
 lt = 1
-rt = maxLen
+rt = maxTime
 res = 0
-
 while lt <= rt:
   mid = (lt + rt) // 2
-  total = 0
-  for x in numList:
-    total += x // mid
+  tmpSum = 0
+  cnt = 0
+  for x in dvd:
+    tmpSum += x 
+    if tmpSum >= mid:
+      cnt += 1
+      tmpSum = x
+      # print(mid, cnt, tmpSum)
 
-  if total >= n:
-    res = mid 
+  if cnt == m:
+    res = mid
     lt = mid + 1
-  elif total < n:
+  elif cnt < m:
     rt = mid - 1
-
+  else:
+    lt = mid + 1
+  
 print(res)
