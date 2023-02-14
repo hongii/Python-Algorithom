@@ -1,31 +1,11 @@
-n, c = map(int, input().split())
-position = [int(input()) for _ in range(n)]
-position.sort()
-res = 0
+n = int(input())
+meetingsTime = [tuple(map(int, input().split())) for _ in range(n)]
+meetingsTime.sort(key = lambda x: (x[1], x[0])) # 리스트의 원소인 튜플(a, b)에서 b값 기준으로 오름차순 정렬. 즉, 여기서는 회의 끝나는 시간 기준으로 오름차순 정렬
 
-lt = position[0]
-rt = position[-1]
-while lt <= rt:
-  mid = (lt + rt) // 2
-  
-  # 가까운 두 말의 거리가 mid값 이상이 되도록 말을 배치
-  cnt = 1 # 맨 처음 죄표에 말 한마리 배치
-  pre = 0 # 가장 가까운 이전 말의 idx
-  for i in range(1, n):
-    # print( position[pre],position[i])
-    if position[i] - position[pre] >= mid:
-      cnt += 1
-      pre = i
-
-    if cnt == c:
-      break
-  
-  if cnt < c:
-    rt = mid - 1
-  else:
-    res = mid
-    lt = mid + 1
-
-print(res)
-
-
+cnt = 1
+pre = meetingsTime[0][1]
+for i in range(1, n):
+  if pre <= meetingsTime[i][0]:
+    cnt += 1
+    pre = meetingsTime[i][1]
+print(cnt)
