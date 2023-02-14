@@ -1,3 +1,8 @@
+import sys
+filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\6. 이분탐색(결정알고리즘) & 그리디 알고리즘\\input.txt"
+filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\6. 이분탐색(결정알고리즘) & 그리디 알고리즘\\input.txt"
+sys.stdin = open(filePath_desktop, "rt")
+
 n = int(input())
 info = [list(map(int, input().split())) for _ in range(n)] # [키, 몸무게]
 info.sort(reverse=True) # 키 순으로 내림차순 정렬
