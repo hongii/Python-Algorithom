@@ -24,5 +24,15 @@ while m > 0:
   boxes[maxIdx] -= 1
   boxes[minIdx] += 1
   m -= 1
-
 print(max(boxes) - min(boxes))
+
+
+'''
+# solution 참고 -> but, 입력값의 범위가 큰 경우 대부분 for문 안에 sort()를 사용하면 시간초과 나는 경우가 많다.
+boxes.sort()
+for _ in range(m):
+  boxes[0] += 1
+  boxes[-1] -= 1
+  boxes.sort()
+print(boxes[-1] - boxes[0])
+'''
