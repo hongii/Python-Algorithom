@@ -3,17 +3,18 @@ weight = list(map(int, input().split()))
 weight.sort()
 cnt = 0
 while weight:
-  remainder = m - weight[0]
-  tmp, tmpIdx = -1, -1 
-  for j in range(1, len(weight)):
-    if remainder >= weight[j]:
-      tmp = max(weight[j], tmp)
-      tmpIdx = j
+  if len(weight) == 1:
+    cnt += 1
+    break
+  # 가장 무거운 승객과 가장 가벼운 승객의 몸무게 합이 m을 초과하는 경우, 가장 무거운 승객만 구조된다.
+  if weight[0] + weight[-1] > m:
+    weight.pop()
+    cnt += 1
 
-  # tmpIdx가 초기값-1이 아니라면, 같이 구조되는 승객이 있다는 뜻
-  if tmpIdx != -1:
-    weight.pop(tmpIdx) # 같이 구조되는 승객 제거
-  weight.pop(0) # 현재 구조되는 승객 제거
-  cnt += 1
+  # 가장 무거운 승객과 가장 가벼운 승객의 몸무게 합이 m이하라면 두명이 함께 구조된다.
+  else:
+    weight.pop()
+    weight.pop(0)
+    cnt += 1
 
 print(cnt)
