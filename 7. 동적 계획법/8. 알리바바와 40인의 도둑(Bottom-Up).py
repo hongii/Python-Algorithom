@@ -1,3 +1,7 @@
+import sys
+filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\7. 동적 계획법\\input.txt"
+filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\7. 동적 계획법\\input.txt"
+sys.stdin = open(filePath_desktop, "rt")
 n = int(input())
 height = [list(map(int, input().split()))  for _ in range(n)]
 dp = [[0]*n for _ in range(n)]
