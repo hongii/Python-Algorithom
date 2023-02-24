@@ -1,8 +1,11 @@
-n, m = map(int, input().split())
-dp = [0]* (m+1)
+n = int(input())
+coins = list(map(int, input().split()))
+m = int(input())
+coins.sort()
+dp = [501] * (m+1)
+dp[0] = 0
 
-for i in range(n):
-  w, v = map(int, input().split())
-  for j in range(w, m+1):
-    dp[j] = max(dp[j], dp[j-w]+v)
+for coin in coins:
+  for j in range(coin, m+1):
+    dp[j] = min(dp[j], dp[j-coin] + 1)
 print(dp[m])
