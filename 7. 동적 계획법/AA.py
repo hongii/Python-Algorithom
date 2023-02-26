@@ -1,9 +1,25 @@
 n, m = map(int, input().split())
-scoreAndTime = [list(map(int,input().split())) for _ in range(n)]
-dp = [0] * (m+1)
+M = int(1e9) # M = 10억(무한대 값)
+dp = [[M] * (n+1) for _ in range(n+1)]
 
-for i in range(n):
-  score, time = scoreAndTime[i][0], scoreAndTime[i][1]
-  for j in range(m, time-1, -1): # 제한시간인 m부터 거꾸로 내려가면서 dp를 채운다 -> 하나의 문제유형을 1번만 풀기위함(중복 피하기 위함)
-    dp[j] = max(dp[j], dp[j-time] + score)
-print(dp[m])
+for i in range(1, n+1): # 자기 자신으로 가는 비용은 0으로 갱신
+  dp[i][i] = 0
+
+# dp테이블 초기값은 인접행렬 간선 가중치 값으로 갱신
+for i in range(m):
+  i, j, w = map(int, input().split())
+  dp[i][j] = w
+
+# 모든 정점에서 모든 정점으로 가는 최소비용 구하기
+for k in range(1, n+1):
+  for i in range(1, n+1):
+    for j in range(1, n+1):
+      dp[i][j] = min(dp[i][j], dp[i][k] + dp[k][j])
+
+for i in range(1, n+1):
+  for j in range(1, n+1):
+    if dp[i][j] == 1e9:
+      print("M", end=" ")
+    else:
+      print(dp[i][j], end=" ")
+  print()
