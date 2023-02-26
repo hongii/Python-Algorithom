@@ -1,3 +1,8 @@
+import sys
+filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\7. 동적 계획법\\input.txt"
+filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\7. 동적 계획법\\input.txt"
+sys.stdin = open(filePath_desktop, "rt")
+
 n = int(input())
 inf = int(1e9)
 dp = [[inf] * (n+1) for _ in range(n+1)] # 무한대 값으로 초기화
@@ -11,7 +16,7 @@ while True:
   i, j = map(int, input().split())
   if i == -1 and j == -1:
     break
-  else:
+  else: # 양방향 그래프의 가중치는 i->j, j->i 모두 채운다.
     dp[i][j] = 1
     dp[j][i] = 1
 
