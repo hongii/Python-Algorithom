@@ -21,7 +21,7 @@ dq = deque()
 for i in range(m):
   v, w = map(int, input().split())
   degree[w] += 1
-  graph[v][w] = 1
+  graph[v][w] = 1 # 방향그래프 생성
 # print(degree)
 
 # 진입차수 리스트에서 0인 i값(노드 번호)을 먼저 dq에 넣기
