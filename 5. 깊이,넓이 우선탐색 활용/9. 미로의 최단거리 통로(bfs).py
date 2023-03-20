@@ -1,7 +1,9 @@
 from collections import deque
 import sys
-filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
-sys.stdin = open(filePath, "rt")
+filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\5. 깊이,넓이 우선탐색 활용\\input.txt"
+sys.stdin = open(filePath_desktop, "rt")
+
 
 board = [list(map(int, input().split())) for _ in range(7)]
 dq = deque()
@@ -14,17 +16,14 @@ dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
 while dq:
-	size = len(dq)
-	now = dq.popleft()
-	# print(now)
-	for i in range(size):
-		for j in range(4):
-			x = now[0] + dx[j]
-			y = now[1] + dy[j]
-			if 7 > x >= 0 and 7 > y >= 0 and board[x][y] == 0 and check[x][y] == 0:
-				check[x][y] = 1
-				# print(x, y)
-				dq.append((x, y))
-				distance[x][y] = distance[now[0]][now[1]] + 1
+  now = dq.popleft()  
+  for j in range(4):
+    x = now[0] + dx[j]
+    y = now[1] + dy[j]
+    if 7 > x >= 0 and 7 > y >= 0 and board[x][y] == 0 and check[x][y] == 0:
+      check[x][y] = 1
+      # print(x, y)
+      dq.append((x, y))
+      distance[x][y] = distance[now[0]][now[1]] + 1
 
 print(distance[6][6])
