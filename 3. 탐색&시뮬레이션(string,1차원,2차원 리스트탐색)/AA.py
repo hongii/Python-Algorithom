@@ -1,24 +1,15 @@
-import sys
-# filePath = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo_practice\\Python-Algorithom\\3. 탐색&시뮬레이션(string,1차원,2차원 리스트탐색)\\input.txt"
-# sys.stdin = open(filePath, "rt")
+n = int(input())
+words = [input().lower() for _ in range(n)]
 
-board = [list(map(int, input().split())) for _ in range(7)]
-cnt = 0
+w1, w2 = "",  ""
+for i in range(len(words)):
+  midIdx = len(words[i]) // 2
+  w1 = words[i][:midIdx]
+  w2 = words[i][midIdx:][::-1]
+  if len(words[i]) % 2 == 1:
+    w2 = words[i][midIdx+1:][::-1]
 
-# 행 방향 회문수 비교
-for i in range(7): # 총 7개의 행 각각에서
-  for j in range(3): # 하나의 행에서 5글자 회문문자열을 총 3번씩 비교
-    tmp = board[i][j:j+5]
-    if tmp[0] == tmp[-1] and tmp[1] == tmp[-2]: # solution 추가 => if tmp == tmp[::-1]: 이 true라면, 회문구조가 된다.
-      cnt += 1
-
-# 열 방향 회문수 비교
-for i in range(7): # 총 7개의 열 각각에서
-  for j in range(3): # 하나의 열에서 5글자 회문문자열을 총 3번씩 비교 
-    tmp = []
-    for k in range(5):
-      tmp.append(board[k+j][i])
-    if tmp[0] == tmp[-1] and tmp[1] == tmp[-2]:
-      cnt += 1
-
-print(cnt)
+  if w1 == w2:
+    print("#{0} YES".format(i+1))
+  else:
+    print("#{0} NO".format(i+1))
