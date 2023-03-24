@@ -1,15 +1,14 @@
 n = int(input())
-words = [input().lower() for _ in range(n)]
+board = [list(map(int, input().split())) for _ in range(n)]
+res = 0
+l = r = n//2
+for i in range(n):
+	res += sum(board[i][l:r+1])
+	if i < n//2:
+		l -= 1
+		r += 1
+	elif i >= n//2:
+		l += 1
+		r -= 1
 
-w1, w2 = "",  ""
-for i in range(len(words)):
-  midIdx = len(words[i]) // 2
-  w1 = words[i][:midIdx]
-  w2 = words[i][midIdx:][::-1]
-  if len(words[i]) % 2 == 1:
-    w2 = words[i][midIdx+1:][::-1]
-
-  if w1 == w2:
-    print("#{0} YES".format(i+1))
-  else:
-    print("#{0} NO".format(i+1))
+print(res)
