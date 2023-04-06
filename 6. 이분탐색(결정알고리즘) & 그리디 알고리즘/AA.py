@@ -1,15 +1,28 @@
-length = int(input())
-boxes = list(map(int, input().split()))
-m = int(input())
+from collections import deque
+n = int(input())
+numList = deque(map(int, input().split()))
+pre = 0
+res = ""
+while len(numList) > 1:
+  if pre < max(numList[0], numList[-1]):
+    if numList[0] < numList[-1] and pre < numList[0]:
+      pre = numList.popleft()
+      res += "L"
+    elif numList[0] < numList[-1] and pre > numList[0]:
+      pre = numList.pop()
+      res += "R"
+    elif numList[0] > numList[-1] and pre < numList[-1]:
+      pre = numList.pop()
+      res += "R"
+    elif numList[0] > numList[-1] and pre > numList[-1]:
+      pre = numList.popleft()
+      res += "L"
+  else:
+    break
 
-for i, x in enumerate(boxes):
-  boxes[i] = [x, i] # boxes리스트 요소를 [높이, 위치(idx)]쌍으로 다시 저장
 
-while m > 0:
-  maxHeight, maxIdx = max(boxes)
-  minHeight, minIdx = min(boxes)
-  boxes[maxIdx][0] -= 1
-  boxes[minIdx][0] += 1
-  m -= 1
-  
-print(max(boxes)[0] - min(boxes)[0])
+if len(numList) == 1 and numList[0] > pre:
+  res += "L"
+
+print(len(res))
+print(res)

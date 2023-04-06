@@ -4,9 +4,38 @@ filePath_laptop = "C:\\Users\khj77\\OneDrive\\바탕 화면\\Python\\python_Algo
 filePath_desktop = "C:\\Users\\cywoo\\OneDrive\\바탕 화면\\Python\\python_algo_practice\\Python-Algorithom\\6. 이분탐색(결정알고리즘) & 그리디 알고리즘\\input.txt"
 sys.stdin = open(filePath_desktop, "rt")
 
+
+# 2회차 복습 풀이 -> 100점
 n = int(input())
 numList = deque(map(int, input().split()))
+pre = 0
+res = ""
+while len(numList) > 1:
+  if pre < max(numList[0], numList[-1]):
+    if numList[0] < numList[-1] and pre < numList[0]:
+      pre = numList.popleft()
+      res += "L"
+    elif numList[0] < numList[-1] and pre > numList[0]:
+      pre = numList.pop()
+      res += "R"
+    elif numList[0] > numList[-1] and pre < numList[-1]:
+      pre = numList.pop()
+      res += "R"
+    elif numList[0] > numList[-1] and pre > numList[-1]:
+      pre = numList.popleft()
+      res += "L"
+  else:
+    break
 
+if len(numList) == 1 and numList[0] > pre:
+  res += "L"
+
+print(len(res))
+print(res)
+
+
+
+'''
 # solution 참고
 lt, rt = 0, n-1
 lastNum = 0
@@ -37,7 +66,7 @@ while lt <= rt:
 
 print(len(res))
 print(res)
-
+'''
 
 '''첫번째 코드 100점
 res = []
