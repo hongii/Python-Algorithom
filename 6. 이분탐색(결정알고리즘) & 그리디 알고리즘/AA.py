@@ -1,15 +1,15 @@
-# 다시 풀어볼 문제 -> 잘못된 결과에 대한 코드 수정 못했음
-n = int(input())
-inverse = list(map(int, input().split()))
-res = [0]*n
-for i in range(n):
-  cnt = inverse[i]
-  for j in range(n):
-    if res[j] == 0 and cnt == 0:
-      res[j] = i+1
-      break
-    elif res[j] == 0:
-      cnt -= 1
-  
-print(*res)
+length = int(input())
+boxes = list(map(int, input().split()))
+m = int(input())
 
+for i, x in enumerate(boxes):
+  boxes[i] = [x, i] # boxes리스트 요소를 [높이, 위치(idx)]쌍으로 다시 저장
+
+while m > 0:
+  maxHeight, maxIdx = max(boxes)
+  minHeight, minIdx = min(boxes)
+  boxes[maxIdx][0] -= 1
+  boxes[minIdx][0] += 1
+  m -= 1
+  
+print(max(boxes)[0] - min(boxes)[0])

@@ -7,6 +7,24 @@ length = int(input())
 boxes = list(map(int, input().split()))
 m = int(input())
 
+for i, x in enumerate(boxes):
+  boxes[i] = [x, i] # boxes리스트 요소를 [높이, 위치(idx)]쌍으로 다시 저장
+
+while m > 0:
+  maxHeight, maxIdx = max(boxes)
+  minHeight, minIdx = min(boxes)
+  boxes[maxIdx][0] -= 1
+  boxes[minIdx][0] += 1
+  m -= 1
+
+print(max(boxes)[0] - min(boxes)[0])
+
+
+'''1차 풀이 100점
+length = int(input())
+boxes = list(map(int, input().split()))
+m = int(input())
+
 # maxIdx, minIdx = 0, 0
 while m > 0:
   # 박스의 최대 높이와 최소 높이 위치 찾기
@@ -25,7 +43,7 @@ while m > 0:
   boxes[minIdx] += 1
   m -= 1
 print(max(boxes) - min(boxes))
-
+'''
 
 '''
 # solution 참고 -> but, 입력값의 범위가 큰 경우 대부분 for문 안에 sort()를 사용하면 시간초과 나는 경우가 많다.
